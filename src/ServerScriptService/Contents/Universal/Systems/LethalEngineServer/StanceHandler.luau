@@ -3,7 +3,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local LethalEngineShared = ReplicatedStorage.LethalEngine
 
-local QuickNet = require(LethalEngineShared.Utility.QuickNet)
+local QuickNet = require(LethalEngineShared.QuickNet)
 local Stances = require(LethalEngineShared.Config.Stances)
 local Spring = require(LethalEngineShared.Utility.Spring)
 

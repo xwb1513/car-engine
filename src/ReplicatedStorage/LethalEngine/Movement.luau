@@ -1,14 +1,17 @@
+local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local LethalEngineShared = ReplicatedStorage:WaitForChild("LethalEngine")
 
 local ClientState = require(LethalEngineShared.States.ClientState)
 local Keybinds = require(LethalEngineShared.Keybinds)
-local QuickNet = require(LethalEngineShared.Utility.QuickNet)
+local QuickNet = require(LethalEngineShared.QuickNet)
 local Stances = require(LethalEngineShared.Config.Stances)
 local Spring = require(LethalEngineShared.Utility.Spring)
 
 local StanceEvent: RemoteFunction = QuickNet.getSignal("Stances", "RemoteFunction")
+
+local LocalPlayer = Players.LocalPlayer
 
 local offsetSpring = nil
 
@@ -62,7 +65,7 @@ local function invokeStanceEvent()
 	return StanceEvent:InvokeServer(stance)
 end
 
-function Movement.connectCharacter(character: Model)
+function Movement.setupCharacter(character: Model)
 	local humanoid: Humanoid = character:WaitForChild("Humanoid")
 	setWalkSpeed(humanoid, Stances.Standing.Walkspeed)
 	setupCameraOffsetSpring(humanoid)
@@ -120,6 +123,14 @@ function Movement.connectCharacter(character: Model)
 			end
 		end,
 	})
+end
+
+function Movement.init()
+	if LocalPlayer.Character then
+		Movement.setupCharacter(LocalPlayer.Character)
+	end
+
+	LocalPlayer.CharacterAdded:Connect(Movement.setupCharacter)
 end
 
 return Movement

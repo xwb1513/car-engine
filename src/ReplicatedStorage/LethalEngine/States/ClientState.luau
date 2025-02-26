@@ -8,6 +8,7 @@ local ClientState = States.new({
 	Movement = {
 		Stance = "Standing",
 		Sprinting = false,
+		Sitting = false,
 	},
 })
 

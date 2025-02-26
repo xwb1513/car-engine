@@ -1,29 +1,30 @@
-local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local LethalEngineShared = ReplicatedStorage:WaitForChild("LethalEngine")
+local LethalEnginePath = ReplicatedStorage.LethalEngine
 
-local QuickNet = require(LethalEngineShared.Utility.QuickNet)
-local Movement = require(LethalEngineShared.Movement)
-local Keybinds = require(LethalEngineShared.Keybinds)
+local components = {
+	"Shared/QuickNet",
+	"Shared/Keybinds",
+	"Shared/Movement",
+}
 
-local LocalPlayer = Players.LocalPlayer
+local modules = {}
 
 local LethalEngineClient = {}
 
-function LethalEngineClient.onCharacterAdded(character: Model)
-	Movement.connectCharacter(character)
+local function getPath(component: string)
+	local directory, moduleName = component:match("([^/]+)/(.+)")
+	return directory == "Shared" and LethalEnginePath or LethalEnginePath, moduleName
 end
 
 function LethalEngineClient.init()
-	QuickNet.init()
-	Keybinds.init()
-
-	if LocalPlayer.Character then
-		LethalEngineClient.onCharacterAdded(LocalPlayer.Character)
+	for _, component in ipairs(components) do
+		local basePath, moduleName = getPath(component)
+		modules[moduleName] = require(basePath:WaitForChild(moduleName))
+		if modules[moduleName].init then
+			modules[moduleName].init()
+		end
 	end
-
-	LocalPlayer.CharacterAdded:Connect(LethalEngineClient.onCharacterAdded)
 end
 
 return LethalEngineClient

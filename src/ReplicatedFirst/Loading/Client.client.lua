@@ -6,7 +6,7 @@ local Network = require(ReplicatedStorage:WaitForChild("Common"):WaitForChild("N
 Network.startClientAsync()
 
 local player = Players.LocalPlayer
-local PlayerScripts = script.Parent
+local PlayerScripts = player:WaitForChild("PlayerScripts")
 
 local directories = {
 	PlayerScripts:WaitForChild("Contents"):WaitForChild("Game"),

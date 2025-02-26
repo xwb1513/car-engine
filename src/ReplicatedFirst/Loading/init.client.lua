@@ -5,13 +5,14 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local SoundService = game:GetService("SoundService")
 local TweenService = game:GetService("TweenService")
+
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
+local PlayerScripts = Player:WaitForChild("PlayerScripts")
 
-local Client = script.Client:Clone()
+local Client = PlayerScripts:WaitForChild("Client")
 
 if RunService:IsStudio() then
-	Client.Parent = Player.PlayerScripts
 	Client.Disabled = false
 	return
 end
@@ -87,5 +88,4 @@ SoundService.Loading:Stop()
 SoundService:PlayLocalSound(SoundService.LoadComplete)
 FadeLoadingGui()
 Debris:AddItem(LoadingGui, 1)
-Client.Parent = Player.PlayerScripts
 Client.Disabled = false
