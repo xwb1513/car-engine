@@ -1,12 +1,11 @@
 local ServerScriptService = game:GetService("ServerScriptService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Network = require(ReplicatedStorage.Common.Network)
+local Network = require(ReplicatedStorage.Shared.Network)
 
 local directories = {
 	ServerScriptService.Contents.Game,
-	ServerScriptService.Contents.Universal,
-	ReplicatedStorage.Common.Shared.Universal,
+	ReplicatedStorage.Shared.Universal,
 }
 
 local modules = {}

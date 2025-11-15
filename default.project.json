@@ -2,24 +2,10 @@
   "name": "lethal-engine",
   "tree": {
     "$className": "DataModel",
-    "ReplicatedFirst": {
-      "$className": "ReplicatedFirst",
-      "$ignoreUnknownInstances": true,
-      "$path": "src/ReplicatedFirst"
-    },
     "ReplicatedStorage": {
       "$className": "ReplicatedStorage",
       "$ignoreUnknownInstances": true,
-      "$path": "src/ReplicatedStorage",
-      "Packages": {
-        "$path": "Packages"
-      },
-      "Hooks": {
-        "$path": "src/Hooks"
-      },
-      "Components": {
-        "$path": "src/Components"
-      }
+      "$path": "src/ReplicatedStorage"
     },
     "ServerScriptService": {
       "$className": "ServerScriptService",
@@ -33,11 +19,6 @@
     },
     "StarterPlayer": {
       "$className": "StarterPlayer",
-      "StarterCharacterScripts": {
-        "$className": "StarterCharacterScripts",
-        "$ignoreUnknownInstances": true,
-        "$path": "src/StarterPlayer/StarterCharacterScripts"
-      },
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
         "$ignoreUnknownInstances": true,
