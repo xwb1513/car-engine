@@ -3,7 +3,7 @@
 local SystemExample = {}
 
 function SystemExample.init()
-	print("SystemExample initialized")
+	--print("SystemExample initialized")
 end
 
 return SystemExample

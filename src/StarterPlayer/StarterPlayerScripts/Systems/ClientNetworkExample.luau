@@ -13,7 +13,7 @@ function ClientNetworkExample.init()
 
 	Network.connectEvent(Network.RemoteEvents.FoodEvent, function(response: string)
 		-- Client-side logic
-		print(response)
+		--print(response)
 	end, Network.t.string)
 end
 

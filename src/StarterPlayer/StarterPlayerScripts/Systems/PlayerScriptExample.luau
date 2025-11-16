@@ -3,7 +3,7 @@
 local PlayerExample = {}
 
 function PlayerExample.init()
-	print("PlayerExample initialized")
+	--print("PlayerExample initialized")
 end
 
 return PlayerExample

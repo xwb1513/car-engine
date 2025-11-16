@@ -7,7 +7,7 @@ local LocalPlayer = Players.LocalPlayer
 local CharacterExample = {}
 
 function CharacterExample.onCharacterAdded(character: Model)
-	print("CharacterExample.onCharacterAdded", character)
+	--print("CharacterExample.onCharacterAdded", character)
 end
 
 function CharacterExample.init()

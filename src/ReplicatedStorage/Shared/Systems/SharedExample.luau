@@ -3,7 +3,7 @@
 local SharedExample = {}
 
 function SharedExample.init()
-	print("SharedExample initialized")
+	--print("SharedExample initialized")
 end
 
 return SharedExample
