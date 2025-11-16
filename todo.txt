@@ -1,0 +1,6 @@
+Create a small map | Yes
+Create a spawning system that spawns coins around your map. | Yes
+Create the coin-collecting mechanics. | Yes
+Save the player's collected coins on the server-side using a module script. | 
+Display the player's coins as a UI (Does not need to be fancy) | 
+Create your own system that allows players to spend those coins for upgrades or cosmetics. | 
