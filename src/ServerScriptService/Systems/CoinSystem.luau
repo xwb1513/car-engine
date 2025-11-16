@@ -33,6 +33,22 @@ function CoinSystem.init()
     local x = SpawnArea.Size.X * 0.5
     local z = SpawnArea.Size.Z * 0.5
 
+    local function SpawnCoin()
+        local Clone = Coin:Clone()
+
+        Clone.Parent = SpawnedCoins
+        Clone.Name = "Coin"
+
+        Clone.Position = Vector3.new(math.random(CenterX - x, CenterX + x), 5, math.random(CenterZ - z, CenterZ + z))
+
+        if not CollectionService:HasTag(Clone, "Coin") then 
+            Clone:AddTag("Coin") 
+        end
+
+        CoinsSpawned += 1
+        print("CoinsSpawned: " .. CoinsSpawned)
+    end
+    
     local function PrepCoin(part)
         local Prox = part:FindFirstChild("Prox")
         Prox.Triggered:Connect(function(player)
@@ -43,23 +59,15 @@ function CoinSystem.init()
     end
 
     CollectionService:GetInstanceAddedSignal("Coin"):Connect(PrepCoin)
-    
-    while CoinsSpawned<MaxCoins do
-        local Clone = Coin:Clone()
 
-        Clone.Parent = SpawnedCoins
-        Clone.Name = "Coin"
-        Clone.Position = Vector3.new(math.random(CenterX - x, CenterX + x), 5, math.random(CenterZ - z, CenterZ + z))
-
-        if not CollectionService:HasTag(Clone, "Coin") then
-            Clone:AddTag("Coin")
+    task.spawn(function()
+        while true do
+            if CoinsSpawned<MaxCoins then
+                SpawnCoin()
+            end
+            task.wait(SpawnInterval)
         end
-
-        CoinsSpawned += 1
-
-        print(CoinsSpawned)
-        task.wait(SpawnInterval)
-    end
+    end)
 end
 
 return CoinSystem
