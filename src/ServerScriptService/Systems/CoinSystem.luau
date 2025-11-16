@@ -42,10 +42,6 @@ function CoinSystem.init()
         end)
     end
 
-    for _, TaggedCoin in pairs(CollectionService:GetTagged("Coin")) do
-        PrepCoin(TaggedCoin)
-    end
-
     CollectionService:GetInstanceAddedSignal("Coin"):Connect(PrepCoin)
     
     while CoinsSpawned<MaxCoins do
