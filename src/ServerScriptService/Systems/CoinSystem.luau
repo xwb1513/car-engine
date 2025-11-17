@@ -5,6 +5,8 @@ local Workspace = game:GetService("Workspace")
 
 local CoinSystem = {}
 
+local PlayerHandler = require(script.Parent.PlayerHandler)
+
 --Config 
 local MaxCoins = 20
 local CoinsSpawned = 0
@@ -62,6 +64,7 @@ function CoinSystem.init()
                 part:Destroy()
                 CoinsSpawned -= 1
                 print("Coin has been collected by " .. player.Name .. " | CoinsSpawned: " .. CoinsSpawned)
+                PlayerHandler.AddData(player, "Coins", 1)
             end)
         end
 
