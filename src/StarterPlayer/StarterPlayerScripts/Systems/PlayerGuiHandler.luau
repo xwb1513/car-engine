@@ -11,7 +11,7 @@ function PlayerGuiHandler.init()
     local MainGui = LocalPlayer:WaitForChild("PlayerGui", 5):WaitForChild("ScreenGui", 5)
 
     Network.connectEvent(Network.RemoteEvents.PlayerGUISync, function(response: number)
-        MainGui.Frame.TextLabel.Text = string.format("Coins:  %i", response)
+        MainGui.Coins.TextLabel.Text = string.format("Coins:  %i", response)
     end, Network.t.number)
 end
 
