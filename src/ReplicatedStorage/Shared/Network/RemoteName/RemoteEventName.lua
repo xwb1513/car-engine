@@ -29,6 +29,7 @@ export type EnumType =
 	| "TeleportEvent"
 	| "SentryEvent"
 	| "StoreUpdate"
+	| "PlayerGUISync"
 local RemoteEventName = {
 	VoiceCommand = "VoiceCommand" :: "VoiceCommand",
 	MousePing = "MousePing" :: "MousePing",
@@ -52,6 +53,7 @@ local RemoteEventName = {
 	TeleportEvent = "TeleportEvent" :: "TeleportEvent",
 	SentryEvent = "SentryEvent" :: "SentryEvent",
 	StoreUpdate = "StoreUpdate" :: "StoreUpdate",
+	PlayerGUISync = "PlayerGUISync" :: "PlayerGUISync",
 }
 
 return RemoteEventName

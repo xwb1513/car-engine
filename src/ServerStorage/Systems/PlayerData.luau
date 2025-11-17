@@ -28,7 +28,7 @@ function PlayerData.Load(player)
     end
 
     HttpService:JSONEncode(PlayerData)
-    print(PlayerData)
+    --print(PlayerData)
     return PlayerData
 end
 

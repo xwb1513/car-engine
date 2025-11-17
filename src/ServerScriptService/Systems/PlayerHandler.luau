@@ -1,8 +1,11 @@
 local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ServerStorage = game:GetService("ServerStorage")
 local PlayerHandler = {}
 
+local Network = require(ReplicatedStorage.Shared.Network)
 local PlayerData = require(ServerStorage.Systems.PlayerData)
+
 
 PlayerHandler.PlayerData = {}
 
@@ -14,6 +17,9 @@ function PlayerHandler.init()
 
         PlayerHandler.PlayerData[player.UserId] = data
         --print(PlayerHandler.PlayerData)
+        if data.Coins>0 then
+            Network.fireClient(Network.RemoteEvents.PlayerGUISync, player, tonumber(data.Coins))
+        end
     end
 
     local function PlayerLeaving(player)
@@ -33,7 +39,11 @@ function PlayerHandler.AddData(player, key, amount)
     if data then
         data[key] = (data[key]or 0) + amount
     end
-    print(data)
+    --print(data)
+    if key == "Coins" then
+        --print(PlayerHandler.PlayerData)
+        Network.fireClient(Network.RemoteEvents.PlayerGUISync, player, tonumber(data.Coins))
+    end
 end
 
 return PlayerHandler
