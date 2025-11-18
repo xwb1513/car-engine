@@ -8,7 +8,7 @@ local PlayerDataHandler = require(script.Parent.PlayerDataHandler)
 
 local ShopItmes = ServerStorage:FindFirstChild("ShopItems")
 local Sword = ShopItmes:FindFirstChild("Sword")
-local Pistol = ShopItmes:FindFirstAncestor("Pistol")
+local Pistol = ShopItmes:FindFirstChild("Pistol")
 
 local function GiveItemToPlayer(player: Player, itemName: string)
 	if itemName == "Sword" then
